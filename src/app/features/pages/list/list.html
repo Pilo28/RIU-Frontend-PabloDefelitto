@@ -2,10 +2,15 @@
 
 <button (click)="router.navigate(['/list/new'])">Add New Hero</button>
 
+<input
+  type="text"
+  placeholder="Search heroes..."
+  (input)="searchTerm.set($any($event.target).value)"
+/>
 
 @defer {
-  @if (heroes().length > 0) {
-    @for (hero of heroes(); track hero.id) {
+  @if (filteredHeroes().length > 0) {
+    @for (hero of filteredHeroes(); track hero.id) {
       <app-hero-card
         [hero]="hero"
         [defaultImage]="defaultImage"
