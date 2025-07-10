@@ -12,7 +12,7 @@ import { HeroCard } from '../../../shared/components/hero-card/hero-card';
 export class List {
 
   private readonly heroService = inject(HeroService);
-  private readonly router = inject(Router);
+  readonly router = inject(Router);
 
   readonly heroes = this.heroService.heroes;
   readonly defaultImage = 'assets/default-hero.jpg';

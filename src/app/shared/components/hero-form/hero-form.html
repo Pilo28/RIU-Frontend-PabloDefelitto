@@ -1,1 +1,23 @@
-<p>hero-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+  </label>
+
+  <label>
+    Power:
+    <input type="text" formControlName="power" />
+  </label>
+
+  <label>
+    Image URL:
+    <input type="text" formControlName="imageUrl" />
+  </label>
+
+  <div class="preview">
+    <p>Image preview:</p>
+    <img [src]="previewImage" alt="Hero Image" width="150" />
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Save</button>
+</form>
