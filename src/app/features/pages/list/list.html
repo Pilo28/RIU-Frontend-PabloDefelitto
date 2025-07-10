@@ -1,1 +1,15 @@
-<p>list works!</p>
+<h2>Superhero List</h2>
+
+@defer {
+  @if (heroes().length > 0) {
+    @for (hero of heroes(); track hero.id) {
+      <app-hero-card
+        [hero]="hero"
+        [defaultImage]="defaultImage"
+        (edit)="onEdit($event)"
+        (remove)="onRemove($event)" />
+    }
+  } @else {
+    <p>No heroes found.</p>
+  }
+}

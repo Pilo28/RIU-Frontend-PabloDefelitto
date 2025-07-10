@@ -1,1 +1,17 @@
-<p>hero-card works!</p>
+<div class="hero-card">
+  <img [src]="hero.imageUrl || defaultImage" [alt]="hero.name" />
+
+  <div class="hero-info">
+    <h3>{{ hero.name }}</h3>
+    <p>{{ hero.power }}</p>
+
+    @if (hero.imageUrl?.length === 0) {
+      <small>Using default image</small>
+    }
+
+    <div class="actions">
+      <button (click)="edit.emit(hero.id)">Edit</button>
+      <button (click)="remove.emit(hero.id)">Delete</button>
+    </div>
+  </div>
+</div>
