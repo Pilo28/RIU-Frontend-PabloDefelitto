@@ -20,7 +20,7 @@ export class HeroForm {
     this.form = this.fb.group({
       name: [this.initialHero?.name || '', Validators.required],
       power: [this.initialHero?.power || '', Validators.required],
-      imageUrl: [this.initialHero?.imageUrl || '']
+      imageUrl: [this.initialHero?.imageUrl || '', [this.imageUrlValidator]]
     });
   }
 
@@ -31,6 +31,15 @@ export class HeroForm {
   }
 
   get previewImage(): string {
-    return this.form?.get('imageUrl')?.value || 'assets/default-hero.jpg';
+    return this.form?.get('imageUrl')?.value || 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExemNuajQ5YTVidTVnMWN2YzU3a214ODZ0MHA4Z3YycWNyYzIxbG8xYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/76xOJtHpn1b5rCWqew/giphy.gif';
   }
+
+  imageUrlValidator(control: import("@angular/forms").AbstractControl) {
+  const url = control.value;
+  if (!url) return null; // Opcional
+
+  const imageRegex = /\.(jpeg|jpg|png|gif|webp)$/i;
+  return imageRegex.test(url) ? null : { invalidImageUrl: true };
+}
+
 }
