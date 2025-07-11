@@ -3,10 +3,11 @@ import { HeroForm } from '../../../shared/components/hero-form/hero-form';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeroService } from '../../../core/services/hero';
 import { Hero } from '../../../core/models/hero.model';
+import { BackButtonDirective } from '../../../shared/directives/back-button';
 
 @Component({
   selector: 'app-edit',
-  imports: [HeroForm],
+  imports: [HeroForm, BackButtonDirective],
   templateUrl: './edit.html',
   styleUrl: './edit.scss'
 })

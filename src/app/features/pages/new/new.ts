@@ -3,10 +3,11 @@ import { HeroService } from '../../../core/services/hero';
 import { Router } from '@angular/router';
 import { Hero } from '../../../core/models/hero.model';
 import { HeroForm } from '../../../shared/components/hero-form/hero-form';
+import { BackButtonDirective } from '../../../shared/directives/back-button';
 
 @Component({
   selector: 'app-new',
-  imports: [HeroForm],
+  imports: [HeroForm, BackButtonDirective],
   templateUrl: './new.html',
   styleUrl: './new.scss'
 })
