@@ -76,3 +76,104 @@
     cursor: not-allowed;
   }
 }
+.hero-form {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(145deg, #ffffff, #f3f4f6);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    margin: 2rem 1rem;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #374151;
+  }
+
+  input {
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    &:focus-visible {
+      border-color: #2563eb;
+    }
+
+    &.ng-invalid.ng-touched {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+    }
+  }
+
+  .error {
+    color: #dc2626;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    font-weight: 500;
+  }
+}
+
+.preview {
+  text-align: center;
+
+  p {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  img {
+    width: 160px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.btn-save {
+  padding: 0.85rem 2rem;
+  background-color: #3b82f6; // azul brillante
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+  }
+}

@@ -30,13 +30,17 @@ export class HeroForm {
     }
   }
 
-  get previewImage(): string {
-    return this.form?.get('imageUrl')?.value || 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExemNuajQ5YTVidTVnMWN2YzU3a214ODZ0MHA4Z3YycWNyYzIxbG8xYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/76xOJtHpn1b5rCWqew/giphy.gif';
+  get previewImage(): string | null {
+  const url = this.form?.get('imageUrl')?.value;
+  const isValidImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+  return isValidImage ? url : 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExemNuajQ5YTVidTVnMWN2YzU3a214ODZ0MHA4Z3YycWNyYzIxbG8xYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/76xOJtHpn1b5rCWqew/giphy.gif';
   }
+
+
 
   imageUrlValidator(control: import("@angular/forms").AbstractControl) {
   const url = control.value;
-  if (!url) return null; // Opcional
+  if (!url) return null;
 
   const imageRegex = /\.(jpeg|jpg|png|gif|webp)$/i;
   return imageRegex.test(url) ? null : { invalidImageUrl: true };
