@@ -1,11 +1,16 @@
 <div class="card">
-  <img [src]="hero.imageUrl || defaultImage" [alt]="hero.name" class="card-image" />
+  <img
+    [src]="hero.imageUrl || defaultImage"
+    [alt]="hero.name"
+    class="card-image"
+    (error)="onImageError($event)"
+  />
 
   <div class="card-content">
     <h3>{{ hero.name }}</h3>
     <p>{{ hero.power }}</p>
 
-    @if (hero.imageUrl?.length === 0) {
+    @if (useDefaultImage) {
       <small>Using default image</small>
     }
 

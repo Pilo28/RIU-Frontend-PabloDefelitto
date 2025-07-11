@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { HeroService } from '../../../core/services/hero';
 import { Router } from '@angular/router';
 import { HeroCard } from '../../../shared/components/hero-card/hero-card';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,7 @@ export class List {
   readonly router = inject(Router);
 
   readonly heroes = this.heroService.heroes;
-  readonly defaultImage = 'assets/default-hero.jpg';
+  readonly defaultImage = environment.previewImageUrl;
   searchTerm = signal('');
 
 readonly filteredHeroes = computed(() => {

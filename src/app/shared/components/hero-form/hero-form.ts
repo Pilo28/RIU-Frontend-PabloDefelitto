@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-hero-form',
@@ -33,7 +34,7 @@ export class HeroForm {
   get previewImage(): string | null {
   const url = this.form?.get('imageUrl')?.value;
   const isValidImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
-  return isValidImage ? url : 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExemNuajQ5YTVidTVnMWN2YzU3a214ODZ0MHA4Z3YycWNyYzIxbG8xYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/76xOJtHpn1b5rCWqew/giphy.gif';
+  return isValidImage ? url : environment.previewImageUrl;
   }
 
 
