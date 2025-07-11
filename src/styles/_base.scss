@@ -1,0 +1,12 @@
+body {
+  background-color: $color-bg;
+  min-height: 100vh;
+  margin: 0;
+  font-family: $font-main;
+}
+
+.page-container {
+  max-width: $max-width;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}

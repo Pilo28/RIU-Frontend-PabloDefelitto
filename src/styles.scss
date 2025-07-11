@@ -1,6 +1,4 @@
-body {
-  background-color: #fdf6f0; /* fondo moderno */
-  min-height: 100vh;
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-}
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+@import 'base';
