@@ -1,23 +1,23 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <label>
-    Name:
-    <input type="text" formControlName="name" />
-  </label>
+<form class="hero-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
 
-  <label>
-    Power:
-    <input type="text" formControlName="power" />
-  </label>
+  <div class="form-group">
+    <label for="power">Power:</label>
+    <input id="power" type="text" formControlName="power" />
+  </div>
 
-  <label>
-    Image URL:
-    <input type="text" formControlName="imageUrl" />
-  </label>
+  <div class="form-group">
+    <label for="imageUrl">Image URL:</label>
+    <input id="imageUrl" type="text" formControlName="imageUrl" />
+  </div>
 
   <div class="preview">
     <p>Image preview:</p>
-    <img [src]="previewImage" alt="Hero Image" width="150" />
+    <img [src]="previewImage" alt="Hero Image" />
   </div>
 
-  <button type="submit" [disabled]="form.invalid">Save</button>
+  <button class="btn-save" type="submit" [disabled]="form.invalid">💾 Save Hero</button>
 </form>

@@ -1,7 +1,7 @@
-<div class="hero-card">
-  <img [src]="hero.imageUrl || defaultImage" [alt]="hero.name" />
+<div class="card">
+  <img [src]="hero.imageUrl || defaultImage" [alt]="hero.name" class="card-image" />
 
-  <div class="hero-info">
+  <div class="card-content">
     <h3>{{ hero.name }}</h3>
     <p>{{ hero.power }}</p>
 

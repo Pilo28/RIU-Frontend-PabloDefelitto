@@ -1,22 +1,29 @@
 <h2>Superhero List</h2>
 
-<button (click)="router.navigate(['/list/new'])">Add New Hero</button>
+<div class="actions">
+  <button class="btn-primary" (click)="router.navigate(['/list/new'])">
+    ➕ Add New Hero
+  </button>
 
-<input
-  type="text"
-  placeholder="Search heroes..."
-  (input)="searchTerm.set($any($event.target).value)"
-/>
+  <input
+    class="input-search"
+    type="text"
+    placeholder="Search heroes..."
+    (input)="searchTerm.set($any($event.target).value)" />
+</div>
+
 
 @defer {
   @if (filteredHeroes().length > 0) {
-    @for (hero of filteredHeroes(); track hero.id) {
-      <app-hero-card
-        [hero]="hero"
-        [defaultImage]="defaultImage"
-        (edit)="onEdit($event)"
-        (remove)="onRemove($event)" />
-    }
+    <div class="card-grid">
+      @for (hero of filteredHeroes(); track hero.id) {
+        <app-hero-card
+          [hero]="hero"
+          [defaultImage]="defaultImage"
+          (edit)="onEdit($event)"
+          (remove)="onRemove($event)" />
+      }
+    </div>
   } @else {
     <p>No heroes found.</p>
   }
