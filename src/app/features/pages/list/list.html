@@ -5,11 +5,11 @@
     ➕ Add New Hero
   </button>
 
-  <input
-    class="input-search"
-    type="text"
-    placeholder="Search heroes..."
-    (input)="searchTerm.set($any($event.target).value)" />
+  <app-search-box
+  [placeholder]="'Search heroes...'"
+  [value]="searchTerm()"
+  (search)="onSearch($event)" />
+
 </div>
 
 

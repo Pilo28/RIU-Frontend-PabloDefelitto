@@ -5,10 +5,11 @@ import { HeroCard } from '../../../shared/components/hero-card/hero-card';
 import { environment } from '../../../../environments/environment';
 import { ConfirmDialog } from '../../../shared/components/confirm-dialog/confirm-dialog';
 import { Hero } from '../../../core/models/hero.model';
+import { SearchBox } from '../../../shared/components/search-box/search-box';
 
 @Component({
   selector: 'app-list',
-  imports: [HeroCard, ConfirmDialog],
+  imports: [HeroCard, ConfirmDialog, SearchBox],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })
@@ -71,4 +72,10 @@ export class List {
   this.showConfirmDialog.set(false);
   this.heroToDelete.set(null);
   }
+
+  onSearch(term: string) {
+  this.searchTerm.set(term);
+  this.currentPage.set(1);
+  }
+
 }
