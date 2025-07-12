@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
 import { environment } from '../../../../environments/environment';
 
@@ -10,17 +10,17 @@ import { environment } from '../../../../environments/environment';
 })
 export class HeroCard {
 
-  @Input({ required: true }) hero!: Hero;
-  @Input() defaultImage: string = environment.previewImageUrl;
+  hero = input.required<Hero>();
+  defaultImage = input(environment.previewImageUrl);
 
-  @Output() edit = new EventEmitter<string>();
-  @Output() remove = new EventEmitter<string>();
+  edit = output<string>();
+  remove = output<string>();
 
   useDefaultImage = false;
 
   onImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
-    img.src = this.defaultImage;
+    img.src = this.defaultImage();
     this.useDefaultImage = true;
   }
 

@@ -1,22 +1,22 @@
 <div class="card">
   <img
-    [src]="hero.imageUrl || defaultImage"
-    [alt]="hero.name"
+    [src]="hero().imageUrl || defaultImage()"
+    [alt]="hero().name"
     class="card-image"
     (error)="onImageError($event)"
   />
 
   <div class="card-content">
-    <h3>{{ hero.name }}</h3>
-    <p>{{ hero.power }}</p>
+    <h3>{{ hero().name }}</h3>
+    <p>{{ hero().power }}</p>
 
     @if (useDefaultImage) {
       <small>Using default image</small>
     }
 
     <div class="actions">
-      <button (click)="edit.emit(hero.id)">Edit</button>
-      <button (click)="remove.emit(hero.id)">Delete</button>
+      <button (click)="edit.emit(hero().id)">Edit</button>
+      <button (click)="remove.emit(hero().id)">Delete</button>
     </div>
   </div>
 </div>
