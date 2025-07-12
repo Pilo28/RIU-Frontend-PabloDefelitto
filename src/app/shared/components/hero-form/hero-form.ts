@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, output, Output } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
@@ -10,18 +10,20 @@ import { environment } from '../../../../environments/environment';
   styleUrl: './hero-form.scss'
 })
 export class HeroForm {
-  @Input() initialHero: Hero | null = null;
-  @Output() submitForm = new EventEmitter<Omit<Hero, 'id'>>();
+
+  readonly initialHero = input<Hero | null>(null);
+  readonly submitForm = output<Omit<Hero, 'id'>>();
 
   form!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
+    const hero = this.initialHero();
     this.form = this.fb.group({
-      name: [this.initialHero?.name || '', Validators.required],
-      power: [this.initialHero?.power || '', Validators.required],
-      imageUrl: [this.initialHero?.imageUrl || '', [this.imageUrlValidator]]
+      name: [hero?.name || '', Validators.required],
+      power: [hero?.power || '', Validators.required],
+      imageUrl: [hero?.imageUrl || '', [this.imageUrlValidator]]
     });
   }
 
