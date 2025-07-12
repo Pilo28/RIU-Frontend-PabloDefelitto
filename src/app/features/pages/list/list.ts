@@ -19,13 +19,13 @@ export class List {
   readonly defaultImage = environment.previewImageUrl;
   searchTerm = signal('');
 
-readonly filteredHeroes = computed(() => {
-  const term = this.searchTerm().toLowerCase().trim();
-  if (!term) return this.heroes();
-  return this.heroes().filter(hero =>
-    hero.name.toLowerCase().includes(term)
-  );
-});
+  readonly filteredHeroes = computed(() => {
+    const term = this.searchTerm().toLowerCase().trim();
+    if (!term) return this.heroes();
+    return this.heroes().filter(hero =>
+      hero.name.toLowerCase().includes(term)
+    );
+  });
 
   onEdit(id: string) {
     this.router.navigate(['/list', id, 'edit']);

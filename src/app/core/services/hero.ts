@@ -36,7 +36,7 @@ export class HeroService {
 
   create(hero: Omit<Hero, 'id'>) {
     const newHero: Hero = { ...hero, id: uuid() };
-    this._heroes.update(hs => [...hs, newHero]);
+    this._heroes.update(hs => [newHero,...hs]);
   }
 
   update(hero: Hero) {
