@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, Input, output, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
@@ -21,10 +21,20 @@ export class HeroForm {
   ngOnInit() {
     const hero = this.initialHero();
     this.form = this.fb.group({
-      name: [hero?.name || '', Validators.required],
-      power: [hero?.power || '', Validators.required],
-      imageUrl: [hero?.imageUrl || '', [this.imageUrlValidator]]
+      name: [
+        hero?.name || '',
+        [Validators.required, Validators.maxLength(8)]
+      ],
+      power: [
+        hero?.power || '',
+        [Validators.required, Validators.maxLength(9)]
+      ],
+      imageUrl: [
+        hero?.imageUrl || '',
+        [this.imageUrlValidator]
+      ]
     });
+
   }
 
   onSubmit() {

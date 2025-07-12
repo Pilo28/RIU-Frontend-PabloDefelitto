@@ -1,20 +1,30 @@
 <form class="hero-form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <div class="form-group">
-    <label for="name">Name:</label>
-    <input id="name" type="text" formControlName="name" />
-    @if (form.get('name')?.touched && form.get('name')?.invalid) {
+  <label for="name">Name:</label>
+  <input id="name" type="text" formControlName="name" />
+  @if (form.get('name')?.touched && form.get('name')?.errors) {
+    @if (form.get('name')?.errors?.['required']) {
       <div class="error">Name is required.</div>
     }
+    @if (form.get('name')?.errors?.['maxlength']) {
+      <div class="error">Name cannot exceed 8 characters.</div>
+    }
+  }
   </div>
 
   <div class="form-group">
     <label for="power">Power:</label>
     <input id="power" type="text" formControlName="power" />
-    @if (form.get('power')?.touched && form.get('power')?.invalid) {
-      <div class="error">Power is required.</div>
-    }
-  </div>
+      @if (form.get('power')?.touched && form.get('power')?.errors) {
+        @if (form.get('power')?.errors?.['required']) {
+          <div class="error">Power is required.</div>
+        }
+        @if (form.get('power')?.errors?.['maxlength']) {
+          <div class="error">Power cannot exceed 9 characters.</div>
+        }
+      }
+    </div>
 
   <div class="form-group">
     <label for="imageUrl">Image URL:
@@ -24,11 +34,11 @@
       </span>
     </span>
     </label>
-    <input id="imageUrl" type="text" formControlName="imageUrl" />
-    @if (form.get('imageUrl')?.touched && form.get('imageUrl')?.errors?.['invalidImageUrl']) {
-      <div class="error">Please enter a valid image URL (.jpg, .jpeg, .png, .gif or .webp).</div>
-    }
-  </div>
+      <input id="imageUrl" type="text" formControlName="imageUrl" />
+      @if (form.get('imageUrl')?.touched && form.get('imageUrl')?.errors?.['invalidImageUrl']) {
+        <div class="error">Please enter a valid image URL (.jpg, .jpeg, .png, .gif or .webp).</div>
+      }
+    </div>
 
   <div class="preview">
     <p>Image preview:</p>
