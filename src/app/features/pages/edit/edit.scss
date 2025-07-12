@@ -1,0 +1,23 @@
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #f3f4f6; // gris suave
+  color: #1f2937; // gris oscuro
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    background-color: #e5e7eb;
+    color: #111827;
+    transform: translateX(-2px);
+  }
+}
