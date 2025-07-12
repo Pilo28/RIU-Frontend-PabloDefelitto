@@ -14,15 +14,21 @@
 
 
 @defer {
-  @if (filteredHeroes().length > 0) {
+  @if (paginatedHeroes().length > 0) {
     <div class="card-grid">
-      @for (hero of filteredHeroes(); track hero.id) {
+      @for (hero of paginatedHeroes(); track hero.id) {
         <app-hero-card
           [hero]="hero"
           [defaultImage]="defaultImage"
           (edit)="onEdit($event)"
           (remove)="onRemove($event)" />
       }
+    </div>
+
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage() === 1">⬅ Prev</button>
+      <span>Page {{ currentPage() }} of {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage() === totalPages">Next ➡</button>
     </div>
   } @else {
     <p>No heroes found.</p>

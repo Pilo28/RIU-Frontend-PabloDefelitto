@@ -18,6 +18,8 @@ export class List {
   readonly heroes = this.heroService.heroes;
   readonly defaultImage = environment.previewImageUrl;
   searchTerm = signal('');
+  currentPage = signal(1);
+  readonly pageSize = 6;
 
   readonly filteredHeroes = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
@@ -26,6 +28,28 @@ export class List {
       hero.name.toLowerCase().includes(term)
     );
   });
+
+  readonly paginatedHeroes = computed(() => {
+    const start = (this.currentPage() - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    return this.filteredHeroes().slice(start, end);
+  });
+
+  get totalPages() {
+    return Math.ceil(this.filteredHeroes().length / this.pageSize);
+  }
+
+  nextPage() {
+    if (this.currentPage() < this.totalPages) {
+      this.currentPage.update(p => p + 1);
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage() > 1) {
+      this.currentPage.update(p => p - 1);
+    }
+  }
 
   onEdit(id: string) {
     this.router.navigate(['/list', id, 'edit']);
