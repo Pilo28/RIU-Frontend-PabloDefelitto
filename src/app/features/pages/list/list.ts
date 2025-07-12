@@ -6,10 +6,11 @@ import { environment } from '../../../../environments/environment';
 import { ConfirmDialog } from '../../../shared/components/confirm-dialog/confirm-dialog';
 import { Hero } from '../../../core/models/hero.model';
 import { SearchBox } from '../../../shared/components/search-box/search-box';
+import { Pagination } from '../../../shared/components/pagination/pagination';
 
 @Component({
   selector: 'app-list',
-  imports: [HeroCard, ConfirmDialog, SearchBox],
+  imports: [HeroCard, ConfirmDialog, SearchBox, Pagination],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })

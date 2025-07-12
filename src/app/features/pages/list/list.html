@@ -33,11 +33,13 @@
       </app-confirm-dialog>
     }
 
-    <div class="pagination">
-      <button (click)="prevPage()" [disabled]="currentPage() === 1">⬅ Prev</button>
-      <span>Page {{ currentPage() }} of {{ totalPages }}</span>
-      <button (click)="nextPage()" [disabled]="currentPage() === totalPages">Next ➡</button>
-    </div>
+    <app-pagination
+    [currentPage]="currentPage()"
+    [totalPages]="totalPages"
+    (prev)="prevPage()"
+    (next)="nextPage()">
+    </app-pagination>
+
   } @else {
     <p>No heroes found.</p>
   }
