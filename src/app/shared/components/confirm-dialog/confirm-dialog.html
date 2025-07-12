@@ -1,7 +1,7 @@
 <div class="dialog-backdrop">
   <div class="dialog">
-    <h3>{{ title }}</h3>
-    <p>{{ message }}</p>
+    <h3>{{ title() }}</h3>
+    <p>{{ message() }}</p>
     <div class="dialog-actions">
       <button class="btn-confirm" (click)="onYes()">Yes</button>
       <button class="btn-cancel" (click)="onNo()">No</button>
