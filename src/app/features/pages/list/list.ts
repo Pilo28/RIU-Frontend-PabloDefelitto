@@ -3,10 +3,12 @@ import { HeroService } from '../../../core/services/hero';
 import { Router } from '@angular/router';
 import { HeroCard } from '../../../shared/components/hero-card/hero-card';
 import { environment } from '../../../../environments/environment';
+import { ConfirmDialog } from '../../../shared/components/confirm-dialog/confirm-dialog';
+import { Hero } from '../../../core/models/hero.model';
 
 @Component({
   selector: 'app-list',
-  imports: [HeroCard],
+  imports: [HeroCard, ConfirmDialog],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })
@@ -20,6 +22,8 @@ export class List {
   searchTerm = signal('');
   currentPage = signal(1);
   readonly pageSize = 6;
+  showConfirmDialog = signal(false);
+  heroToDelete = signal<Hero | null>(null);
 
   readonly filteredHeroes = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
@@ -55,7 +59,16 @@ export class List {
     this.router.navigate(['/list', id, 'edit']);
   }
 
-  onRemove(id: string) {
-    this.heroService.delete(id);
+  confirmRemove(hero: Hero) {
+  this.heroToDelete.set(hero);
+  this.showConfirmDialog.set(true);
+  }
+
+  onDialogResponse(confirmed: boolean) {
+  if (confirmed && this.heroToDelete()) {
+    this.heroService.delete(this.heroToDelete()!.id);
+  }
+  this.showConfirmDialog.set(false);
+  this.heroToDelete.set(null);
   }
 }

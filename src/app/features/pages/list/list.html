@@ -21,9 +21,17 @@
           [hero]="hero"
           [defaultImage]="defaultImage"
           (edit)="onEdit($event)"
-          (remove)="onRemove($event)" />
+          (remove)="confirmRemove(hero)" />
       }
     </div>
+
+    @if (showConfirmDialog()) {
+      <app-confirm-dialog
+        [title]="'Confirm deletion'"
+        [message]="'Are you sure you want to delete ' + heroToDelete()?.name + '?'"
+        (confirm)="onDialogResponse($event)">
+      </app-confirm-dialog>
+    }
 
     <div class="pagination">
       <button (click)="prevPage()" [disabled]="currentPage() === 1">⬅ Prev</button>
