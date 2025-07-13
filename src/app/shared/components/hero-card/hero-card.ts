@@ -1,10 +1,11 @@
-import { Component, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
 import { environment } from '../../../../environments/environment';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-hero-card',
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './hero-card.html',
   styleUrl: './hero-card.scss'
 })
@@ -23,5 +24,11 @@ export class HeroCard {
     img.src = this.defaultImage();
     this.useDefaultImage = true;
   }
+
+  readonly heroImage = computed(() => {
+  const url = this.hero().imageUrl?.trim();
+  return url ? url : this.defaultImage();
+});
+
 
 }

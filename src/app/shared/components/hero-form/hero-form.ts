@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -5,7 +6,7 @@ import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-hero-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgOptimizedImage],
   templateUrl: './hero-form.html',
   styleUrl: './hero-form.scss'
 })

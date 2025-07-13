@@ -1,10 +1,28 @@
-<div class="dialog-backdrop">
-  <div class="dialog">
-    <h3>{{ title() }}</h3>
-    <p>{{ message() }}</p>
+<div class="dialog-backdrop" role="presentation">
+  <div
+    class="dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="dialog-title"
+    aria-describedby="dialog-message"
+    tabindex="-1"
+  >
+    <h3 id="dialog-title">{{ title() }}</h3>
+    <p id="dialog-message">{{ message() }}</p>
+
     <div class="dialog-actions">
-      <button class="btn-confirm" (click)="onYes()">Yes</button>
-      <button class="btn-cancel" (click)="onNo()">No</button>
+      <button
+        class="btn-confirm"
+        (click)="onYes()"
+        aria-label="Confirmar">
+        Yes
+      </button>
+      <button
+        class="btn-cancel"
+        (click)="onNo()"
+        aria-label="Cancelar">
+        No
+      </button>
     </div>
   </div>
 </div>

@@ -1,46 +1,48 @@
-<h2>Superhero List</h2>
+<section>
+  <h2>Superhero List</h2>
 
-<div class="actions">
-  <button class="btn-primary" (click)="router.navigate(['/list/new'])">
-    ➕ Add New Hero
-  </button>
+  <div class="actions">
+    <button class="btn-primary" aria-label="Add New Hero" (click)="router.navigate(['/list/new'])">
+      ➕ Add New Hero
+    </button>
 
-  <app-search-box
-  [placeholder]="'Search heroes...'"
-  [value]="searchTerm()"
-  (search)="onSearch($event)" />
+    <app-search-box
+    [placeholder]="'Search heroes...'"
+    [value]="searchTerm()"
+    (search)="onSearch($event)" />
 
-</div>
+  </div>
 
 
-@defer {
-  @if (paginatedHeroes().length > 0) {
-    <div class="card-grid">
-      @for (hero of paginatedHeroes(); track hero.id) {
-        <app-hero-card
-          [hero]="hero"
-          [defaultImage]="defaultImage"
-          (edit)="onEdit($event)"
-          (remove)="confirmRemove(hero)" />
+  @defer {
+    @if (paginatedHeroes().length > 0) {
+      <div class="card-grid">
+        @for (hero of paginatedHeroes(); track hero.id) {
+          <app-hero-card
+            [hero]="hero"
+            [defaultImage]="defaultImage"
+            (edit)="onEdit($event)"
+            (remove)="confirmRemove(hero)" />
+        }
+      </div>
+
+      @if (showConfirmDialog()) {
+        <app-confirm-dialog
+          [title]="'Confirm deletion'"
+          [message]="'Are you sure you want to delete ' + heroToDelete()?.name + '?'"
+          (confirm)="onDialogResponse($event)">
+        </app-confirm-dialog>
       }
-    </div>
 
-    @if (showConfirmDialog()) {
-      <app-confirm-dialog
-        [title]="'Confirm deletion'"
-        [message]="'Are you sure you want to delete ' + heroToDelete()?.name + '?'"
-        (confirm)="onDialogResponse($event)">
-      </app-confirm-dialog>
+      <app-pagination
+      [currentPage]="currentPage()"
+      [totalPages]="totalPages"
+      (prev)="prevPage()"
+      (next)="nextPage()">
+      </app-pagination>
+
+    } @else {
+      <p>No heroes found.</p>
     }
-
-    <app-pagination
-    [currentPage]="currentPage()"
-    [totalPages]="totalPages"
-    (prev)="prevPage()"
-    (next)="nextPage()">
-    </app-pagination>
-
-  } @else {
-    <p>No heroes found.</p>
   }
-}
+</section>

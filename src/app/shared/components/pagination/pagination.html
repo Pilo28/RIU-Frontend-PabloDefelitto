@@ -1,5 +1,17 @@
-<div class="pagination">
-  <button (click)="prev.emit()" [disabled]="currentPage() === 1">⬅ Prev</button>
-  <span>Page {{ currentPage() }} of {{ totalPages() }}</span>
-  <button (click)="next.emit()" [disabled]="currentPage() === totalPages()">Next ➡</button>
-</div>
+<nav class="pagination" aria-label="Paginación">
+    <button
+      (click)="prev.emit()"
+      [disabled]="currentPage() === 1"
+      aria-label="Página anterior">
+      ⬅ Prev
+    </button>
+
+    <span>Page {{ currentPage() }} of {{ totalPages() }}</span>
+
+    <button
+      (click)="next.emit()"
+      [disabled]="currentPage() === totalPages()"
+      aria-label="Página siguiente">
+      Next ➡
+    </button>
+</nav>

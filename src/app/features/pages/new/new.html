@@ -1,6 +1,8 @@
-<button appBackButton class="btn-back">
-  <span class="icon">🔙</span>
-  <span class="label">Volver</span>
-</button>
-<app-hero-form (submitForm)="createHero($event)" />
-
+<section>
+  <h2>add new hero</h2>
+  <button appBackButton class="btn-back" aria-label="Volver a la página anterior">
+    <span class="icon">🔙</span>
+    <span class="label">Volver</span>
+  </button>
+  <app-hero-form (submitForm)="createHero($event)" />
+</section>

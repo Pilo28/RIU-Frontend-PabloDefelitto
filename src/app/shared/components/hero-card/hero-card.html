@@ -1,10 +1,15 @@
-<div class="card">
+<article class="card">
+
+@if (heroImage()) {
   <img
-    [src]="hero().imageUrl || defaultImage()"
+    ngSrc="{{ heroImage() }}"
+    width="300"
+    height="300"
     [alt]="hero().name"
     class="card-image"
-    (error)="onImageError($event)"
-  />
+    (error)="onImageError($event)" />
+}
+
 
   <div class="card-content">
     <h3>{{ hero().name }}</h3>
@@ -15,8 +20,8 @@
     }
 
     <div class="actions">
-      <button (click)="edit.emit(hero().id)">Edit</button>
-      <button (click)="remove.emit(hero().id)">Delete</button>
+      <button (click)="edit.emit(hero().id)" [attr.aria-label]="'Edit ' + hero().name" >Edit</button>
+      <button (click)="remove.emit(hero().id)" [attr.aria-label]="'Delete ' + hero().name">Delete</button>
     </div>
   </div>
-</div>
+</article>

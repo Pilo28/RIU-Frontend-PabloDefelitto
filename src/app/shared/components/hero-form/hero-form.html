@@ -42,7 +42,13 @@
 
   <div class="preview">
     <p>Image preview:</p>
-    <img [src]="previewImage" alt="Hero Image" />
+    <img
+      ngSrc="{{ previewImage }}"
+      width="200"
+      height="200"
+      alt="Hero Image Preview"
+      class="preview-image"
+    />
   </div>
 
   <button class="btn-save" type="submit" [disabled]="form.invalid"> Save Hero</button>

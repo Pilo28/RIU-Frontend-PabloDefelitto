@@ -1,9 +1,12 @@
-<button appBackButton class="btn-back">
-  <span class="icon">🔙</span>
-  <span class="label">Volver</span>
-</button>
-@if (hero) {
-      <app-hero-form [initialHero]="hero" (submitForm)="updateHero($event)" />
-    } @else {
-      <p>Loading...</p>
-}
+<section>
+  <h2>edit hero</h2>
+  <button appBackButton class="btn-back" aria-label="Volver a la página anterior">
+      <span class="icon">🔙</span>
+      <span class="label">Volver</span>
+    </button>
+    @if (hero) {
+          <app-hero-form [initialHero]="hero" (submitForm)="updateHero($event)" />
+        } @else {
+          <p>Loading...</p>
+    }
+</section>
