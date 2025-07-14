@@ -1,15 +1,14 @@
 <article class="card">
 
-@if (heroImage()) {
-  <img
-    ngSrc="{{ heroImage() }}"
-    width="300"
-    height="300"
-    [alt]="hero().name"
-    class="card-image"
-    (error)="onImageError($event)" />
-}
-
+  @if (heroImage()) {
+    <img
+      ngSrc="{{ heroImage() }}"
+      width="300"
+      height="300"
+      [alt]="hero().name"
+      class="card-image"
+      (error)="onImageError($event)" />
+  }
 
   <div class="card-content">
     <h3>{{ hero().name }}</h3>
@@ -20,8 +19,18 @@
     }
 
     <div class="actions">
-      <button (click)="edit.emit(hero().id)" [attr.aria-label]="'Edit ' + hero().name" >Edit</button>
-      <button (click)="remove.emit(hero().id)" [attr.aria-label]="'Delete ' + hero().name">Delete</button>
+      <button
+        (click)="edit.emit(hero().id)"
+        [attr.aria-label]="'Edit ' + hero().name">
+        Edit
+      </button>
+
+      <button
+        (click)="remove.emit(hero().id)"
+        [attr.aria-label]="'Delete ' + hero().name">
+        Delete
+      </button>
     </div>
   </div>
+
 </article>

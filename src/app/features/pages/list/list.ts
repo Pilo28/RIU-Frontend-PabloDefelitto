@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { HeroService } from '../../../core/services/hero';
+import { HeroService } from '../../../core/services/hero.service';
 import { Router } from '@angular/router';
 import { HeroCard } from '../../../shared/components/hero-card/hero-card';
 import { environment } from '../../../../environments/environment';

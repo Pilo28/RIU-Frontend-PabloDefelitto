@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { HeroService } from '../../../core/services/hero';
+import { HeroService } from '../../../core/services/hero.service';
 import { Router } from '@angular/router';
 import { Hero } from '../../../core/models/hero.model';
 import { HeroForm } from '../../../shared/components/hero-form/hero-form';
