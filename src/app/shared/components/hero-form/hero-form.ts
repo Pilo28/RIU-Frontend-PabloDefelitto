@@ -25,11 +25,11 @@ export class HeroForm {
     this.form = this.fb.group({
       name: [
         hero?.name || '',
-        [Validators.required, Validators.maxLength(8)]
+        [Validators.required, Validators.maxLength(14)]
       ],
       power: [
         hero?.power || '',
-        [Validators.required, Validators.maxLength(9)]
+        [Validators.required, Validators.maxLength(14)]
       ],
       imageUrl: [
         hero?.imageUrl || '',

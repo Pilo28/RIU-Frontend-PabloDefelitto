@@ -8,7 +8,7 @@
       <div class="error">Name is required.</div>
     }
     @if (form.get('name')?.errors?.['maxlength']) {
-      <div class="error">Name cannot exceed 8 characters.</div>
+      <div class="error">Name cannot exceed 14 characters.</div>
     }
   }
   </div>
@@ -21,7 +21,7 @@
           <div class="error">Power is required.</div>
         }
         @if (form.get('power')?.errors?.['maxlength']) {
-          <div class="error">Power cannot exceed 9 characters.</div>
+          <div class="error">Power cannot exceed 14 characters.</div>
         }
       }
     </div>
