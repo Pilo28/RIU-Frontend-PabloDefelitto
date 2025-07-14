@@ -29,3 +29,30 @@ SPA desarrollada en **Angular 20** como prueba técnica para gestión de superh�
 -  Mensaje informativo si se intenta editar un héroe tras recargar la página (F5)
 
 ---
+
+## 🐳 Docker
+
+Para ejecutar esta app usando Docker:
+
+```bash
+# 1. Construir la imagen
+docker build -t hero-app .
+
+# 2. Ejecutar el contenedor en el puerto 8080
+docker run -d -p 8080:80 hero-app
+
+Accedé a la app en tu navegador: http://localhost:8080
+
+
+## 🐳 Ejecutar con Docker (sin clonar el repo)
+
+Podés levantar directamente la aplicación descargando la imagen desde Docker Hub:
+
+```bash
+# 1. Descargar imagen desde Docker Hub
+docker pull pilo28/hero-app:latest
+
+# 2. Ejecutar la app en el puerto 8080
+docker run -d -p 8080:80 pilo28/hero-app
+
+Luego abrí http://localhost:8080 en tu navegador.
