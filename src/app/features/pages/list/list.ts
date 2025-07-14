@@ -48,8 +48,17 @@ export class List {
 
   readonly pageSizeOptions = computed(() => {
   const total = this.filteredHeroes().length;
-  return Array.from({ length: total }, (_, i) => i + 1);
-  });
+  const options = Array.from({ length: total }, (_, i) => i + 1);
+
+  const current = this.pageSize();
+  if (!options.includes(current)) {
+    options.push(current);
+    options.sort((a, b) => a - b);
+  }
+
+  return options;
+});
+
 
   get totalPages() {
     return Math.ceil(this.filteredHeroes().length / this.pageSize());
