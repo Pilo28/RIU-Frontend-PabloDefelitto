@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Hero } from '../../../core/models/hero.model';
 import { NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({selector: 'app-hero-card', template: ''})
 class MockHeroCard {}
@@ -29,7 +29,7 @@ describe('List Component', () => {
 
   beforeEach(async () => {
     mockHeroService = jasmine.createSpyObj('HeroService', ['delete'], {
-      heroes: of(heroesMock),
+      heroes: signal<Hero[]>(heroesMock),
     });
 
     mockRouter = jasmine.createSpyObj('Router', ['navigate']);
