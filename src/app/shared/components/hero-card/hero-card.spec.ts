@@ -35,7 +35,7 @@ describe('HeroCard', () => {
     const name = fixture.nativeElement.querySelector('h3');
     const power = fixture.nativeElement.querySelector('p');
 
-    expect(name?.textContent).toContain(mockHero.name);
+    expect(name?.textContent).toContain(mockHero.name.toUpperCase());
     expect(power?.textContent).toContain(mockHero.power);
   });
 
