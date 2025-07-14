@@ -12,6 +12,22 @@
     (search)="onSearch($event)" />
 
   </div>
+  <section class="page-size-selector">
+    <label for="pageSize" class="visually-hidden">Items per page</label>
+
+    <select
+      #pageSizeSelect
+      id="pageSize"
+      aria-label="Select number of heroes per page"
+      [value]="pageSize()"
+      (change)="onPageSizeChange($event)">
+
+      @for (size of pageSizeOptions(); track size) {
+        <option [value]="size">{{ size }}</option>
+      }
+    </select>
+  </section>
+
 
 
   @defer {
@@ -44,5 +60,7 @@
     } @else {
       <p>No heroes found.</p>
     }
-  }
+  } @placeholder {
+  <p>Loading heroes...</p>
+}
 </section>

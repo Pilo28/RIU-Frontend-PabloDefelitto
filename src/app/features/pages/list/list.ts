@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { HeroService } from '../../../core/services/hero.service';
 import { Router } from '@angular/router';
 import { HeroCard } from '../../../shared/components/hero-card/hero-card';
@@ -24,9 +24,11 @@ export class List {
   readonly defaultImage = environment.previewImageUrl;
   searchTerm = signal('');
   currentPage = signal(1);
-  readonly pageSize = 6;
+  pageSize = signal(6);
   showConfirmDialog = signal(false);
   heroToDelete = signal<Hero | null>(null);
+
+  @ViewChild('pageSizeSelect') pageSizeSelect!: ElementRef<HTMLSelectElement>;
 
   readonly filteredHeroes = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
@@ -37,13 +39,26 @@ export class List {
   });
 
   readonly paginatedHeroes = computed(() => {
-    const start = (this.currentPage() - 1) * this.pageSize;
-    const end = start + this.pageSize;
+    const pageSize = this.pageSize();
+    const start = (this.currentPage() - 1) * pageSize;
+    const end = start + pageSize;
+
     return this.filteredHeroes().slice(start, end);
   });
 
+  readonly pageSizeOptions = computed(() => {
+  const total = this.filteredHeroes().length;
+  return Array.from({ length: total }, (_, i) => i + 1);
+  });
+
   get totalPages() {
-    return Math.ceil(this.filteredHeroes().length / this.pageSize);
+    return Math.ceil(this.filteredHeroes().length / this.pageSize());
+  }
+
+  onPageSizeChange(event: Event) {
+  const newSize = +(event.target as HTMLSelectElement).value;
+  this.pageSize.set(newSize);
+  this.currentPage.set(1);
   }
 
   nextPage() {
@@ -80,4 +95,11 @@ export class List {
   this.currentPage.set(1);
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      if (this.pageSizeSelect?.nativeElement) {
+        this.pageSizeSelect.nativeElement.value = String(this.pageSize());
+      }
+    });
+  }
 }
