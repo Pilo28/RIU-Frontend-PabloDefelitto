@@ -1,9 +1,9 @@
 <section>
-  <h2>Superhero List</h2>
+  <h2>{{ 'superhero list' | titlecase }}</h2>
 
   <div class="actions">
     <button class="btn-primary" aria-label="Add New Hero" (click)="router.navigate(['/list/new'])">
-      ➕ Add New Hero
+      ➕ {{ 'Add New Hero' | titlecase }}
     </button>
 
     <app-search-box

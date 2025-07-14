@@ -1,12 +1,13 @@
 <section>
-  <h2>edit hero</h2>
+  <h2>{{ 'edit hero' | titlecase }}</h2>
   <button appBackButton class="btn-back" aria-label="Volver a la página anterior">
       <span class="icon">🔙</span>
-      <span class="label">Volver</span>
+      <span class="label">{{ 'volver' | titlecase }}</span>
     </button>
     @if (hero) {
           <app-hero-form [initialHero]="hero" (submitForm)="updateHero($event)" />
         } @else {
-          <p>Loading...</p>
+           <p>⚠️ Sorry, hero not found. This might happen because the heroes are stored only in memory.<br><br>
+              Please go back to the list and try again.</p>
     }
 </section>

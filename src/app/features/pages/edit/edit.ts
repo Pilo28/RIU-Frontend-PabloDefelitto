@@ -4,10 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HeroService } from '../../../core/services/hero.service';
 import { Hero } from '../../../core/models/hero.model';
 import { BackButtonDirective } from '../../../shared/directives/back-button';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-edit',
-  imports: [HeroForm, BackButtonDirective],
+  imports: [HeroForm, BackButtonDirective, TitleCasePipe],
   templateUrl: './edit.html',
   styleUrl: './edit.scss'
 })

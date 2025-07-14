@@ -11,24 +11,24 @@
   }
 
   <div class="card-content">
-    <h3>{{ hero().name }}</h3>
-    <p>{{ hero().power }}</p>
+    <h3>{{ hero().name | uppercase }}</h3>
+    <p>{{ hero().power | titlecase}}</p>
 
     @if (useDefaultImage) {
-      <small>Using default image</small>
+      <small>{{ 'using default image' | titlecase }}</small>
     }
 
     <div class="actions">
       <button
         (click)="edit.emit(hero().id)"
         [attr.aria-label]="'Edit ' + hero().name">
-        Edit
+        {{ 'edit' | titlecase }}
       </button>
 
       <button
         (click)="remove.emit(hero().id)"
         [attr.aria-label]="'Delete ' + hero().name">
-        Delete
+        {{ 'delete' | titlecase }}
       </button>
     </div>
   </div>

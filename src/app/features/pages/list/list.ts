@@ -7,10 +7,11 @@ import { ConfirmDialog } from '../../../shared/components/confirm-dialog/confirm
 import { Hero } from '../../../core/models/hero.model';
 import { SearchBox } from '../../../shared/components/search-box/search-box';
 import { Pagination } from '../../../shared/components/pagination/pagination';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-list',
-  imports: [HeroCard, ConfirmDialog, SearchBox, Pagination],
+  imports: [HeroCard, ConfirmDialog, SearchBox, Pagination, TitleCasePipe],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })

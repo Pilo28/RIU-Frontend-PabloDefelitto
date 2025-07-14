@@ -1,11 +1,11 @@
 import { Component, computed, input, output } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
 import { environment } from '../../../../environments/environment';
-import { NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-hero-card',
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, UpperCasePipe, TitleCasePipe],
   templateUrl: './hero-card.html',
   styleUrl: './hero-card.scss'
 })

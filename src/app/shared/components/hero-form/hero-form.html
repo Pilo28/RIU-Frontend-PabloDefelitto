@@ -2,7 +2,7 @@
 
   <div class="form-group">
   <label for="name">Name:</label>
-  <input id="name" type="text" formControlName="name" />
+  <input id="name" type="text" formControlName="name" appUppercase/>
   @if (form.get('name')?.touched && form.get('name')?.errors) {
     @if (form.get('name')?.errors?.['required']) {
       <div class="error">Name is required.</div>

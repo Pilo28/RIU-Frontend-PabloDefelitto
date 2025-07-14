@@ -1,3 +1,4 @@
+import { UppercaseDirective } from './../../directives/uppercase';
 import { NgOptimizedImage } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { Hero } from '../../../core/models/hero.model';
@@ -6,7 +7,7 @@ import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-hero-form',
-  imports: [ReactiveFormsModule, NgOptimizedImage],
+  imports: [ReactiveFormsModule, NgOptimizedImage, UppercaseDirective],
   templateUrl: './hero-form.html',
   styleUrl: './hero-form.scss'
 })
