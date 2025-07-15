@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { HeroService } from '../../../core/services/hero.service';
 import { Router } from '@angular/router';
 import { HeroCard } from '../../../shared/components/hero-card/hero-card';
@@ -16,7 +16,7 @@ import { LoadingSpinner } from '../../../shared/components/loading-spinner/loadi
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })
-export class List implements OnInit{
+export class List implements OnInit, AfterViewInit{
 
   private readonly heroService = inject(HeroService);
   readonly router = inject(Router);
