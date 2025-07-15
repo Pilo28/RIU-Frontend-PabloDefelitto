@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, inject, signal, ViewChild } from '@angular/core';
+import { Component, computed, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { HeroService } from '../../../core/services/hero.service';
 import { Router } from '@angular/router';
 import { HeroCard } from '../../../shared/components/hero-card/hero-card';
@@ -8,14 +8,15 @@ import { Hero } from '../../../core/models/hero.model';
 import { SearchBox } from '../../../shared/components/search-box/search-box';
 import { Pagination } from '../../../shared/components/pagination/pagination';
 import { TitleCasePipe } from '@angular/common';
+import { LoadingSpinner } from '../../../shared/components/loading-spinner/loading-spinner';
 
 @Component({
   selector: 'app-list',
-  imports: [HeroCard, ConfirmDialog, SearchBox, Pagination, TitleCasePipe],
+  imports: [HeroCard, ConfirmDialog, SearchBox, Pagination, TitleCasePipe, LoadingSpinner],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })
-export class List {
+export class List implements OnInit{
 
   private readonly heroService = inject(HeroService);
   readonly router = inject(Router);
@@ -27,8 +28,15 @@ export class List {
   pageSize = signal(6);
   showConfirmDialog = signal(false);
   heroToDelete = signal<Hero | null>(null);
+  readonly isReady = signal(false);
 
   @ViewChild('pageSizeSelect') pageSizeSelect!: ElementRef<HTMLSelectElement>;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.isReady.set(true);
+    }, 1500);
+  }
 
   readonly filteredHeroes = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
